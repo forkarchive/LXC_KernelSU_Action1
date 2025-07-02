@@ -180,7 +180,8 @@ jobs:
         export KBUILD_BUILD_HOST=Github-Action
         export MOTO_DT_NO_OVERLAY=1
         export KBUILD_BUILD_USER=$(echo ${{ github.actor }} | tr A-Z a-z)
-    
+        echo "CONFIG_BUILD_ARM64_DT_OVERLAY=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
+
         if [ ! -z ${{ env.KSU_EXPECTED_SIZE }} ] && [ ! -z ${{ env.KSU_EXPECTED_HASH }} ]; then
           export KSU_EXPECTED_SIZE=${{ env.KSU_EXPECTED_SIZE }}
           export KSU_EXPECTED_HASH=${{ env.KSU_EXPECTED_HASH }}
